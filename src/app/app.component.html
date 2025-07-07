@@ -1,3 +1,22 @@
+
+
+<div class="drag-drop-area" 
+     appDragAndDrop 
+     (fileDropped)="onFilesDropped($event)"
+     [allowedFileTypes]="allowedImageTypes">
+  <p>Drag and drop images here</p>
+  <p>or click to browse:</p>
+  <input type="file" (change)="onFileSelected($event)" multiple accept="image/*">
+</div>
+
+<div *ngIf="droppedImages.length > 0" class="image-previews">
+  <h2>Dropped Images:</h2>
+  <div *ngFor="let img of droppedImages" class="image-preview-item">
+    <img [src]="img.url" [alt]="img.file.name">
+    <!-- <p>{{ img.file.name }} ({{ (img.file.size / 1024 / 1024).toFixed(2) }} MB)</p> -->
+    <p>{{img.file.name}}  </p>
+  </div>
+</div>
 <div class="container">
 
 <h1>This is I get from API that I deploy on Tomcat Server  = >    <span style="color: red; font-weight: bold;">  {{getStr}} </span>  </h1>
